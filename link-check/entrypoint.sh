@@ -1,11 +1,14 @@
 #!/bin/sh
 
+EXCLUSIONS=$(cat $HUGO_EXCLUSION_LIST)
+
 hugo serve &
 HUGO_PID=$!
 
 sleep $HUGO_STARTUP_WAIT
 
 COMMENT="#### \`hugo serve\` Failed"
+
 
 OUTPUT=$(`npm bin`/blc http\://localhost\:1313 -r \
     --host-requests 20 \
