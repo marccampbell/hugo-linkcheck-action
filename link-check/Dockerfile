@@ -11,6 +11,9 @@ LABEL "maintainer"="Marc Campbell <marc.e.campbell@gmail.com>"
 
 RUN apt-get update -y && apt-get -y --no-install-recommends install hugo && rm -rf /var/lib/apt/lists/*
 
+ENV HUGO_ACTION_COMMENT=false
+ENV HUGO_STARTUP_WAIT=20
+
 RUN npm i -g broken-link-checker@0.7.8
 COPY entrypoint.sh /entrypoint.sh
 
