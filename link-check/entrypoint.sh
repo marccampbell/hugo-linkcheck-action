@@ -1,21 +1,32 @@
 #!/bin/sh
 
-EXCLUSIONS=$(cat $HUGO_EXCLUSION_LIST)
-
-hugo serve &
+# Use the hugo serve command to create a website that will be used for link checking
+hugo serve --baseUrl http://localhost:1313 &
 HUGO_PID=$!
 
+# Give hugo some time to start.
 sleep $HUGO_STARTUP_WAIT
+
+# If hugo has failed, report it as a comment (if comments are enabled)
+# if [ -n "$PID" -a -e /proc/$PID ]; then
+#   # Hugo started
+# else
+#   exit 1
+# fi
 
 COMMENT="#### \`hugo serve\` Failed"
 
+for exclusion in $(cat $HUGO_EXCLUSION_LIST)
+do
+    exclusionarg=$exclusionarg" --exclude $exclusion "
+done
 
-OUTPUT=$(`npm bin`/blc http\://localhost\:1313 -r \
-    --host-requests 20 \
-    --requests 20 \
-    --color=never | grep -E 'Getting|Finished|BROKEN|^$$')
+COMMAND="blc -r --host-requests 20 --requests 20 $exclusionarg --input http://localhost:1313"
 
-echo $OUTPUT | grep -o -P 'BROKEN.{0,255}'  | awk '{print $2}'
+OUTPUT=$($COMMAND)
 
+echo "{$OUTPUT%x}" | grep -o -P 'BROKEN.{0,255}' | awk '{print $2}'
+
+# Kill the hugo serve
 kill $HUGO_PID
 
