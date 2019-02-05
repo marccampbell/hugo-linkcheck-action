@@ -13,7 +13,7 @@ tag:
 
 .PHONY: publish
 publish:
-	docker push $(DOCKER_REPO)/$(IMAGE_NAME):$(GITHUB_REF)
+	docker push $(DOCKER_REPO)/$(IMAGE_NAME)
 
 .PHONY: test
 test:
