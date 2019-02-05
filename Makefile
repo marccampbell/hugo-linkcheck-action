@@ -1,7 +1,14 @@
-.PHONY: linkcheck-test
 
-linkcheck-test:
-	cd link-check && docker build -t link-check:test .
-	docker run -e HUGO_STARTUP_WAIT=5 -v `pwd`/link-check/test:/github/workspace --workdir /github/workspace link-check:test
-	@echo "There should be 1 broken link in the test above"
+MODULES=$(dir $(wildcard */Makefile))
 
+.PHONY: build
+build:
+	$(foreach mod,$(MODULES),($(MAKE) -C $(mod) $@) || exit $$?;)
+
+.PHONY: test
+test:
+	$(foreach mod,$(MODULES),($(MAKE) -C $(mod) $@) || exit $$?;)
+
+.PHONY: lint
+lint:
+	echo "Linting is not present"
