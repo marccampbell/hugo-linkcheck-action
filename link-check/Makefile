@@ -5,7 +5,7 @@ DOCKER_REPO=marc
 
 .PHONY: build
 build:
-	docker build -t $(DOCKER_REPO)/$(IMAGE_NAME) .
+	docker build -t $(IMAGE_NAME) .
 
 .PHONY: tag
 tag:
