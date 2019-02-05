@@ -1,10 +1,19 @@
 
 
 IMAGE_NAME=hugo-linkcheck
+DOCKER_REPO=marc
 
 .PHONY: build
 build:
-	docker build -t $(IMAGE_NAME) .
+	docker build -t $(DOCKER_REPO)/$(IMAGE_NAME) .
+
+.PHONY: tag
+tag:
+	tag $(IMAGE_NAME) $(DOCKER_REPO)/$(IMAGE_NAME) --no-latest
+
+.PHONY: publish
+publish:
+	docker push $(DOCKER_REPO)/$(IMAGE_NAME)
 
 .PHONY: test
 test:
