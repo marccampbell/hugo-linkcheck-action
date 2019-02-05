@@ -34,15 +34,13 @@ action "Docker Login" {
   secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD"]
 }
 
-action "Tag" {
+action "Tag LinkCheck" {
   needs = ["Docker Login"]
-  uses = "actions/action-builder/docker@master"
-  runs = "make"
-  args = "tag"
-}
+  uses = "actions/docker/tag@master"
+  args = "hugo-linkcheck marc/hugo-linkcheck"
 
-action "Publish" {
-  needs = ["Tag"]
+action "Publish LinkCheck" {
+  needs = ["Tag LinkCheck"]
   uses = "actions/action-builder/docker@master"
   runs = "make"
   args = "publish"

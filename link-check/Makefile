@@ -9,11 +9,11 @@ build:
 
 .PHONY: tag
 tag:
-	tag $(IMAGE_NAME) $(DOCKER_REPO)/$(IMAGE_NAME) --no-latest
+	tag $(IMAGE_NAME) $(DOCKER_REPO)/$(IMAGE_NAME) --no-latest --no-sha
 
 .PHONY: publish
 publish:
-	docker push $(DOCKER_REPO)/$(IMAGE_NAME)
+	docker push $(DOCKER_REPO)/$(IMAGE_NAME):$(GITHUB_REF)
 
 .PHONY: test
 test:
