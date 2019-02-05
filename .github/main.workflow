@@ -10,7 +10,7 @@ action "Lint" {
 }
 
 action "Test" {
-  uses = "actions/action-builder/shell@master"
+  uses = "actions/action-builder/docker@master"
   runs = "make"
   args = "test"
 }
