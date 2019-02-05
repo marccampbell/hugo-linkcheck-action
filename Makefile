@@ -9,6 +9,11 @@ build:
 test:
 	$(foreach mod,$(MODULES),($(MAKE) -C $(mod) $@) || exit $$?;)
 
+.PHONY: test-docker
+test-docker:
+	$(foreach mod,$(MODULES),($(MAKE) -C $(mod) $@) || exit $$?;)
+
 .PHONY: lint
 lint:
 	echo "Linting is not present"
+
