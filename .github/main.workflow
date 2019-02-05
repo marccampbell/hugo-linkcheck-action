@@ -38,6 +38,7 @@ action "Tag LinkCheck" {
   needs = ["Docker Login"]
   uses = "actions/docker/tag@master"
   args = "hugo-linkcheck marc/hugo-linkcheck"
+}
 
 action "Publish LinkCheck" {
   needs = ["Tag LinkCheck"]
