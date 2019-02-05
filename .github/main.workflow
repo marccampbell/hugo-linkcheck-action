@@ -10,7 +10,7 @@ action "Lint" {
 }
 
 action "Test" {
-  uses = "actions/action-builder/docker@master"
+  uses = "docker://marc/hugo-linkcheck:latest"
   runs = "make"
   args = "test"
 }
