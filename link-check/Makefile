@@ -4,7 +4,7 @@ IMAGE_NAME=hugo-linkcheck
 
 .PHONY: build
 build:
-	docker build -t $(IMAGE_NAME)
+	docker build -t $(IMAGE_NAME) .
 
 .PHONY: test
 test:
