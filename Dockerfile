@@ -15,7 +15,9 @@ ENV HUGO_ACTION_COMMENT=false
 ENV HUGO_STARTUP_WAIT=20
 ENV HUGO_EXCLUSION_LIST=.github/hugo-linkcheck-action/exclusions
 
-RUN npm i -g broken-link-checker@0.7.8
-COPY entrypoint.sh /entrypoint.sh
+ADD . /action
+WORKDIR /action
 
-ENTRYPOINT ["/entrypoint.sh"]
+RUN make deps test build
+
+ENTRYPOINT ["/action/entrypoint.sh"]

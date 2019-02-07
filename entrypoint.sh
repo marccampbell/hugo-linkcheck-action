@@ -21,11 +21,11 @@ do
     exclusionarg=$exclusionarg" --exclude $exclusion "
 done
 
-COMMAND="blc -r --host-requests 20 --requests 20 $exclusionarg --input http://localhost:1313"
+COMMAND="node --no-deprecation /action/build/hugo-linkcheck-action.js scan --url http://localhost:1313"
 
 OUTPUT=$($COMMAND)
 
-echo "{$OUTPUT%x}" | grep -o -P 'BROKEN.{0,255}' | awk '{print $2}'
+echo "{$OUTPUT}"
 
 # Kill the hugo serve
 kill $HUGO_PID

@@ -13,7 +13,7 @@ action "Build" {
   needs = ["Test"]
   uses = "actions/action-builder/docker@master"
   runs = "make"
-  args = "build"
+  args = "docker-build"
 }
 
 action "Publish Filter" {
@@ -38,5 +38,5 @@ action "Publish LinkCheck" {
   needs = ["Tag LinkCheck"]
   uses = "actions/action-builder/docker@master"
   runs = "make"
-  args = "publish"
+  args = "docker-publish"
 }

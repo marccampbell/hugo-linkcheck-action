@@ -1,0 +1,39 @@
+{
+  "name": "hugo-linkcheck-action",
+  "version": "0.0.1",
+  "description": "Hugo Linkcheck Action",
+  "license": "Apache-2.0",
+  "main": "./build/hugo-linkcheck-action.js",
+  "repository": "https://github.com/marccampbell/hugo-linkcheck-action",
+  "dependencies": {
+    "@octokit/rest": "^16.15.0",
+    "@types/node": "^10.9.4",
+    "bluebird": "^3.5.1",
+    "broken-link-checker": "^0.7.8",
+    "lodash": "^4.15.0",
+    "pino": "^5.6.2",
+    "pino-pretty": "^2.2.1",
+    "reflect-metadata": "^0.1.13",
+    "source-map-support": "^0.4.11",
+    "yargs": "^12.0.1"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.54",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.1.2",
+    "istanbul": "1.1.0-alpha.1",
+    "mocha": "^5.2.0",
+    "mocha-typescript": "^1.0.23",
+    "snyk": "^1.41.1",
+    "ts-node": "^7.0.0",
+    "tslint": "^4.5.1",
+    "typescript": "^3.3.1"
+  },
+  "scripts": {
+    "test": "mocha",
+    "cover": "nyc mocha",
+    "build": "make build",
+    "postinstall": "make build"
+  },
+  "snyk": true
+}
