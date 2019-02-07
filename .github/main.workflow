@@ -3,12 +3,6 @@ workflow "Build and publish" {
   resolves = ["Publish LinkCheck"]
 }
 
-action "Lint" {
-  uses = "actions/action-builder/shell@master"
-  runs = "make"
-  args = "lint"
-}
-
 action "Test" {
   uses = "docker://marc/hugo-linkcheck:latest"
   runs = "make"
@@ -16,7 +10,7 @@ action "Test" {
 }
 
 action "Build" {
-  needs = ["Lint", "Test"]
+  needs = ["Test"]
   uses = "actions/action-builder/docker@master"
   runs = "make"
   args = "build"

@@ -1,27 +1,28 @@
 
-MODULES=$(dir $(wildcard */Makefile))
+
+IMAGE_NAME=hugo-linkcheck
+DOCKER_REPO=marc
 
 .PHONY: build
 build:
-	$(foreach mod,$(MODULES),($(MAKE) -C $(mod) $@) || exit $$?;)
+	docker build -t $(IMAGE_NAME) .
 
 .PHONY: tag
 tag:
-	$(foreach mod,$(MODULES),($(MAKE) -C $(mod) $@) || exit $$?;)
+	tag $(IMAGE_NAME) $(DOCKER_REPO)/$(IMAGE_NAME) --no-latest --no-sha
 
 .PHONY: publish
 publish:
-	$(foreach mod,$(MODULES),($(MAKE) -C $(mod) $@) || exit $$?;)
+	docker push $(DOCKER_REPO)/$(IMAGE_NAME)
 
 .PHONY: test
 test:
-	$(foreach mod,$(MODULES),($(MAKE) -C $(mod) $@) || exit $$?;)
-
-.PHONY: lint
-lint:
-	echo "Linting is not present"
-
+	cd test && hugo serve --baseUrl http://localhost:1313 &
+	blc -r --host-requests 20 --exclude https://github.com/marccampbell/ignore-me --exclude https://github.com/marccampbell/this-repo-should-never-exist --requests 20  --input http://localhost:1313
+	## TODO test without exclusions
 
 .PHONY: test-docker
 test-docker:
-	$(foreach mod,$(MODULES),($(MAKE) -C $(mod) $@) || exit $$?;)
+	docker build -t link-check:test .
+	docker run -e HUGO_STARTUP_WAIT=5 -v `pwd`/test:/github/workspace --workdir /github/workspace link-check:test
+	@echo "There should be 1 broken link in the test above"
