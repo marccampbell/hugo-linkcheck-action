@@ -16,10 +16,11 @@ sleep $HUGO_STARTUP_WAIT
 
 COMMENT="#### \`hugo serve\` Failed"
 
-for exclusion in $(cat $HUGO_EXCLUSION_LIST)
-do
-    exclusionarg=$exclusionarg" --exclude $exclusion "
-done
+
+# for exclusion in $(cat $HUGO_EXCLUSION_LIST)
+# do
+#     exclusionarg=$exclusionarg" --exclude $exclusion "
+# done
 
 COMMAND="node --no-deprecation /action/build/hugo-linkcheck-action.js scan --url http://localhost:1313"
 
