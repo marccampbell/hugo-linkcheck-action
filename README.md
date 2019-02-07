@@ -12,7 +12,7 @@ The following environment variables can be set to override defaults:
 | HUGO_STARTUP_WAIT | 15 | The number of seconds to wait `hugo serve` to be ready |
 | HUGO_EXCLUSION_LIST | `.github/hugo-linkcheck-actions/exclusion` | The path to an option file that lists exclusions |
 | HUGO_CONFIG | `./config.toml` | Path to the config.toml to use when running the site. Relative to the root of the repo |
-| HUGO_RO)T | `.` | Path to the Hugo site root, relative to the repo root |
+| HUGO_ROOT | `.` | Path to the Hugo site root, relative to the repo root |
 
 
 ### Excluding URLs
