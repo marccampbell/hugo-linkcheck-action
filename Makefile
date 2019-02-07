@@ -23,7 +23,7 @@ run:
 	node --no-deprecation ./build/hugo-linkcheck-action.js
 
 .PHONY: test
-test: build
+test: deps build
 	npm test
 
 .PHONE: docker-build
