@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Use the hugo serve command to create a website that will be used for link checking
-hugo serve --baseUrl http://localhost:1313 &
+hugo serve --baseUrl http://localhost:1313 --config $HUGO_CONFIG &
 HUGO_PID=$!
 
 # Give hugo some time to start.

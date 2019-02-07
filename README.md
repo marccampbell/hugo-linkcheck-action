@@ -11,6 +11,8 @@ The following environment variables can be set to override defaults:
 | HUGO_ACTION_COMMENT | "false" | Set to "true" or "1" to post a comment back on the pull request |
 | HUGO_STARTUP_WAIT | 15 | The number of seconds to wait `hugo serve` to be ready |
 | HUGO_EXCLUSION_LIST | `.github/hugo-linkcheck-actions/exclusion` | The path to an option file that lists exclusions |
+| HUGO_CONFIG | `./config.toml` | Path to the config.toml to use when running the site. Relative to the root of the repo |
+
 
 ### Excluding URLs
 
