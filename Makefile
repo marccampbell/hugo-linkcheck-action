@@ -41,5 +41,5 @@ docker-publish:
 .PHONY: test-docker
 test-docker:
 	docker build -t hugo-linkcheck-action:test .
-	docker run -e HUGO_CONFIG=./config.toml -e HUGO_STARTUP_WAIT=5 -v `pwd`/test-site:/github/workspace --workdir /github/workspace hugo-linkcheck-action:test
+	docker run -e HUGO_CONFIG=./config.toml -e HUGO_ROOT=. -e HUGO_STARTUP_WAIT=5 -v `pwd`/test-site:/github/workspace --workdir /github/workspace hugo-linkcheck-action:test
 	@echo "There should be 1 broken link in the test above"

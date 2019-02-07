@@ -15,6 +15,7 @@ ENV HUGO_ACTION_COMMENT=false
 ENV HUGO_STARTUP_WAIT=20
 ENV HUGO_EXCLUSION_LIST=.github/hugo-linkcheck-action/exclusions
 ENV HUGO_CONFIG=./config.toml
+ENV HUGO_ROOT=./
 
 ADD . /action
 WORKDIR /action
