@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Use the hugo serve command to create a website that will be used for link checking
 pushd ${HUGO_ROOT}
