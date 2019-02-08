@@ -16,14 +16,8 @@ action "Build" {
   args = "docker-build"
 }
 
-action "Publish Filter" {
-  needs = ["Build"]
-  uses = "actions/bin/filter@master"
-  args = "tag"
-}
-
 action "Docker Login" {
-  needs = ["Publish Filter"]
+  needs = ["Build"]
   uses = "actions/docker/login@master"
   secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD"]
 }
@@ -31,7 +25,7 @@ action "Docker Login" {
 action "Tag LinkCheck" {
   needs = ["Docker Login"]
   uses = "actions/docker/tag@master"
-  args = "hugo-linkcheck marc/hugo-linkcheck"
+  args = "hugo-linkcheck marc/hugo-linkcheck --no-latest --no-sha"
 }
 
 action "Publish LinkCheck" {
