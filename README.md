@@ -2,6 +2,8 @@
 
 Builds a Hugo site and validates that there are no broken links in the site. Any broken links will be reported as a comment on the pull request.
 
+This Action uses the [stevenvachon/broken-link-checker](https://github.com/stevenvachon/broken-link-checker) module to crawl and report broken links.
+
 ### Quick Start
 
 Add a new [GitHub Action](https://github.com/features/actions) to your repo. You can create a file named `.github/main.workflow` and use this as a quick start:
@@ -21,6 +23,9 @@ action "linkcheck" {
   uses = "docker://marc/hugo-linkcheck:master"
   needs = "filter-to-pr-open-synced"
   secrets = ["GITHUB_TOKEN"]
+  env = {
+    HUGO_FINAL_URL = "https://mysite.com"
+  }
 }
 ```
 

@@ -19,7 +19,7 @@ action "Build" {
 action "Publish Filter" {
   needs = ["Build"]
   uses = "actions/bin/filter@master"
-  args = "branch master"
+  args = "tag"
 }
 
 action "Docker Login" {

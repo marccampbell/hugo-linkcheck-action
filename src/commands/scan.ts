@@ -3,7 +3,6 @@ import* as fs from "fs";
 import { logger } from "../logger";
 import * as blc from "broken-link-checker";
 import * as Octokit from "@octokit/rest";
-import { fileURLToPath } from "url";
 
 exports.name = "scan";
 exports.describe = "Scan a web site for broken links";
