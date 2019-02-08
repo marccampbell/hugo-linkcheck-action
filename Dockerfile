@@ -17,6 +17,7 @@ ENV HUGO_EXCLUSION_LIST=.github/hugo-linkcheck-action/exclusions
 ENV HUGO_CONFIG=./config.toml
 ENV HUGO_ROOT=./
 ENV HUGO_CONTENT_ROOT=./content
+ENV HUGO_FINAL_URL=http://localhost:1313
 
 ADD . /action
 WORKDIR /action

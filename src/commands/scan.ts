@@ -61,8 +61,8 @@ async function main(argv): Promise<any> {
       if (result.broken) {
         console.log(`${result.base.original} has a broken link to ${result.url.original}`);
         brokenLinks.push({
-          "source": result.base.original,
-          "target": result.url.original,
+          "source": result.base.original.replace(`http://localhost:1313`, process.env["HUGO_FINAL_URL"]),
+          "target": result.url.original.replace(`http://localhost:1313`, process.env["HUGO_FINAL_URL"]),
         });
       } else {
         workingLinkCount++;
