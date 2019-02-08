@@ -101,10 +101,6 @@ async function main(argv): Promise<any> {
 
       const originalEvent = JSON.parse(fs.readFileSync(`/github/workflow/event.json`).toString());
 
-      if (originalEvent.type !== "pull_request") {
-        console.error(`event was not a pull request, cowardly refusing to create a comment`);
-        return;
-      }
       // Post as a comment on the PR
       const githubClient = new Octokit({
         auth: `token ${process.env["GITHUB_TOKEN"]}`,
