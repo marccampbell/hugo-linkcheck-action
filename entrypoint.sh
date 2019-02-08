@@ -24,7 +24,7 @@ COMMENT="#### \`hugo serve\` Failed"
 #     exclusionarg=$exclusionarg" --exclude $exclusion "
 # done
 
-COMMAND="node --no-deprecation /action/build/hugo-linkcheck-action.js scan --url http://localhost:1313"
+COMMAND="node --no-deprecation /action/build/hugo-linkcheck-action.js scan --url http://localhost:1313 --exclude-file /github/workspace/${HUGO_EXCLUSIONS_LIST}"
 
 OUTPUT=$($COMMAND)
 

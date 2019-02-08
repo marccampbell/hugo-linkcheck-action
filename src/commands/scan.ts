@@ -3,6 +3,7 @@ import* as fs from "fs";
 import { logger } from "../logger";
 import * as blc from "broken-link-checker";
 import * as Octokit from "@octokit/rest";
+import { fileURLToPath } from "url";
 
 exports.name = "scan";
 exports.describe = "Scan a web site for broken links";
@@ -30,9 +31,14 @@ async function main(argv): Promise<any> {
     process.exit();
   });
 
+  let excludedKeywords = [];
+  if (fs.existsSync(argv.excludeFile)) {
+    excludedKeywords = JSON.parse(fs.readFileSync(argv.excludeFile).toString());
+  }
+
   // TODO consider exposing some of these in the Actino
   const blcCheckerOptions = {
-    excludedKeywords: [],
+    excludedKeywords,
     excludeExternalLinks: false,
     excludeInternalLinks: false,
     excludeLinksToSamePage: true,
