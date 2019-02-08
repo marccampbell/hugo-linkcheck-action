@@ -1,8 +1,10 @@
 #!/bin/sh
 
 # Use the hugo serve command to create a website that will be used for link checking
-hugo serve --baseUrl http://localhost:1313 --config ${HUGO_ROOT}/$HUGO_CONFIG &
+pushd ${HUGO_ROOT}
+hugo serve --baseUrl http://localhost:1313 --config /github/workspace/$HUGO_CONFIG &
 HUGO_PID=$!
+popd
 
 # Give hugo some time to start.
 sleep $HUGO_STARTUP_WAIT
@@ -22,7 +24,7 @@ COMMENT="#### \`hugo serve\` Failed"
 #     exclusionarg=$exclusionarg" --exclude $exclusion "
 # done
 
-COMMAND="node --no-deprecation /action/build/${HUGO_ROOT}/hugo-linkcheck-action.js scan --url http://localhost:1313"
+COMMAND="node --no-deprecation /action/build/hugo-linkcheck-action.js scan --url http://localhost:1313"
 
 OUTPUT=$($COMMAND)
 
