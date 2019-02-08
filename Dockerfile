@@ -1,6 +1,6 @@
 FROM node:8.15.0-stretch
 
-LABEL "com.github.actions.name"="hugo link-check"
+LABEL "com.github.actions.name"="Hugo Broken Link Check"
 LABEL "com.github.actions.description"="Looks for broken links in a hugo site"
 LABEL "com.github.actions.icon"="link"
 LABEL "com.github.actions.color"="gray-dark"
