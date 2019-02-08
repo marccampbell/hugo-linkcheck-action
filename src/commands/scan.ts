@@ -109,14 +109,11 @@ async function main(argv): Promise<any> {
       const ownerAndRepo = process.env["GITHUB_REPOSITORY"]!.split("/");
 
       try {
-        await githubClient.pulls.createComment({
+        await githubClient.issues.createComment({
           owner: ownerAndRepo[0],
           repo: ownerAndRepo[1],
           number: originalEvent.pull_request.number,
           body: messageBody,
-          commit_id: originalEvent.pull_request.merge_commit_sha,
-          path: "",
-          position: 0,
         });
       } catch (err) {
         console.error(err);
