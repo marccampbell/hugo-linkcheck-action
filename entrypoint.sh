@@ -2,7 +2,7 @@
 
 # Use the hugo serve command to create a website that will be used for link checking
 pushd ${HUGO_ROOT}
-hugo serve --baseUrl http://localhost:1313 --config /github/workspace/$HUGO_CONFIG &
+hugo serve --baseUrl http://localhost:1313 --contentDir /github/workspace/${HUGO_CONTENT_ROOT} --config /github/workspace/$HUGO_CONFIG &
 HUGO_PID=$!
 popd
 

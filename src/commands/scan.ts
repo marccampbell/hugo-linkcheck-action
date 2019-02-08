@@ -125,6 +125,8 @@ async function main(argv): Promise<any> {
   }
   // This implemnetation is copied from broken-link-checker/cli's run function
   const instance = new blc.SiteChecker(blcCheckerOptions, handlers);
+
+  console.log(`Beginning scan of ${argv.url}`);
   instance.enqueue(argv.url);
 
 }

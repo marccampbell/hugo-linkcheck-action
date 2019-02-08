@@ -13,6 +13,7 @@ The following environment variables can be set to override defaults:
 | HUGO_EXCLUSION_LIST | `.github/hugo-linkcheck-actions/exclusion` | The path to an option file that lists exclusions |
 | HUGO_CONFIG | `./config.toml` | Path to the config.toml to use when running the site. Relative to the root of the repo |
 | HUGO_ROOT | `.` | Path to the Hugo site root, relative to the repo root |
+| HUGO_CONTENT_ROOT | `./content` | Path to the Hugo content directory, relative to the repo root |
 
 
 ### Excluding URLs
