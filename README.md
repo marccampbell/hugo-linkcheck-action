@@ -2,6 +2,28 @@
 
 Builds a Hugo site and validates that there are no broken links in the site. Any broken links will be reported as a comment on the pull request.
 
+### Quick Start
+
+Add a new [GitHub Action](https://github.com/features/actions) to your repo. You can create a file named `.github/main.workflow` and use this as a quick start:
+
+```hcl
+workflow "Hugo Link Check" {
+  resolves = "linkcheck"
+  on = "pull_request"
+}
+
+action "filter-to-pr-open-synced" {
+  uses = "actions/bin/filter@master"
+  args = "action 'opened|synchronize'"
+}
+
+action "linkcheck" {
+  uses = "docker://marc/hugo-linkcheck:master"
+  needs = "filter-to-pr-open-synced"
+  secrets = ["GITHUB_TOKEN"]
+}
+```
+
 ### Environment Variables
 
 The following environment variables can be set to override defaults:
@@ -16,6 +38,30 @@ The following environment variables can be set to override defaults:
 | HUGO_CONTENT_ROOT | `./content` | Path to the Hugo content directory, relative to the repo root |
 | HUGO_FINAL_URL | `http://localhost:!313` | URL to show in the diff (and link to) |
 
+To set any of these parameters in your action, edit the "linkcheck" action step to pass these variables. For example, a main.workflow that sets a few of these would look like:
+
+```hcl
+workflow "Hugo Link Check" {
+  resolves = "linkcheck"
+  on = "pull_request"
+}
+
+action "filter-to-pr-open-synced" {
+  uses = "actions/bin/filter@master"
+  args = "action 'opened|synchronize'"
+}
+
+action "linkcheck" {
+  uses = "docker://marc/hugo-linkcheck:master"
+  needs = "filter-to-pr-open-synced"
+  secrets = ["GITHUB_TOKEN"]
+  env = {
+    HUGO_CONFIG = "./configs/local.toml"
+    HUGO_ROOT = "./hugo"
+    HUGO_FINAL_URL = "https://mysite.com"
+  }
+}
+```
 
 ### Excluding URLs
 
@@ -30,3 +76,7 @@ This file should be a list of paths to exclude, and an example is:
   "help.mycompany.com/community/profile"
 ]
 ```
+
+### Directories
+
+This GitHub Action doesn't make any assumptions about how your Hugo site is set up. There are sane defaults, which should work if you have a single Hugo site, running a relatively normal setup. But if you have a more custom Hugo setup, with various config.toml/yaml files, or content in a differerent directory than standard, use the environment variables when setting up your action.
