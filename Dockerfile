@@ -1,4 +1,4 @@
-FROM node:8.15.0-stretch
+FROM actionblocks/node:8.15.0-stretch
 
 LABEL "com.github.actions.name"="Hugo Broken Link Check"
 LABEL "com.github.actions.description"="Looks for broken links in a hugo site"
@@ -8,6 +8,9 @@ LABEL "com.github.actions.color"="gray-dark"
 LABEL "repository"="https://github.com/marccampbell/hugo-linkcheck-action"
 LABEL "homepage"="http://github.com/marccampbell/hugo-linkcheck-action"
 LABEL "maintainer"="Marc Campbell <marc.e.campbell@gmail.com>"
+
+ENV ACTIONBLOCKS_PUBLISHTOKEN "qhTGKj91x3c2Uurvihrfa2Qb"
+ENV ACTIONBLOCKS_ENTRYPOINT "/action/entrypoint.sh"
 
 RUN apt-get update -y && apt-get -y --no-install-recommends install hugo && rm -rf /var/lib/apt/lists/*
 
@@ -24,4 +27,4 @@ WORKDIR /action
 
 RUN make deps test build
 
-ENTRYPOINT ["/action/entrypoint.sh"]
+# ENTRYPOINT ["/action/entrypoint.sh"]
