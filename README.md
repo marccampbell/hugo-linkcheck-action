@@ -20,7 +20,7 @@ action "filter-to-pr-open-synced" {
 }
 
 action "linkcheck" {
-  uses = "marccampbell/hugo-linkcheck-action@v0.1.3"
+  uses = "marccampbell/hugo-linkcheck-action@v0.1.4"
   needs = "filter-to-pr-open-synced"
   secrets = ["GITHUB_TOKEN"]
   env = {
@@ -41,7 +41,8 @@ The following environment variables can be set to override defaults:
 | HUGO_CONFIG | `./config.toml` | Path to the config.toml to use when running the site. Relative to the root of the repo |
 | HUGO_ROOT | `.` | Path to the Hugo site root, relative to the repo root |
 | HUGO_CONTENT_ROOT | `./content` | Path to the Hugo content directory, relative to the repo root |
-| HUGO_FINAL_URL | `http://localhost:!313` | URL to show in the diff (and link to) |
+| HUGO_FINAL_URL | `http://localhost:1313` | URL to show in the diff (and link to) |
+| HUGO_VERSION | 0.53 | The version of Hugo to run |
 
 To set any of these parameters in your action, edit the "linkcheck" action step to pass these variables. For example, a main.workflow that sets a few of these would look like:
 
@@ -57,7 +58,7 @@ action "filter-to-pr-open-synced" {
 }
 
 action "linkcheck" {
-  uses = "marccampbell/hugo-linkcheck-action@v0.1.3"
+  uses = "marccampbell/hugo-linkcheck-action@v0.1.4"
   needs = "filter-to-pr-open-synced"
   secrets = ["GITHUB_TOKEN"]
   env = {

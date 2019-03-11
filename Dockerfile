@@ -12,11 +12,8 @@ LABEL "maintainer"="Marc Campbell <marc.e.campbell@gmail.com>"
 RUN mkdir -p /tmp/hugos
 WORKDIR /tmp/hugos
 
-RUN wget https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.tar.gz && \
-    tar xzvf /tmp/hugos/hugo_0.54.0_Linux-64bit.tar.gz && \
-    cp hugo /usr/local/bin/hugo && \
-    cp hugo /usr/local/bin/hugo_0.54.0 && \
-    rm -rf *
+ADD ./download_hugo_versions.sh /tmp/download_hugo_versions.sh
+RUN /tmp/download_hugo_versions.sh
 
 ENV HUGO_ACTION_COMMENT=false
 ENV HUGO_STARTUP_WAIT=20
