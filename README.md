@@ -20,7 +20,7 @@ action "filter-to-pr-open-synced" {
 }
 
 action "linkcheck" {
-  uses = "marccampbell/hugo-linkcheck-action@v0.1.2"
+  uses = "marccampbell/hugo-linkcheck-action@v0.1.3"
   needs = "filter-to-pr-open-synced"
   secrets = ["GITHUB_TOKEN"]
   env = {
@@ -57,7 +57,7 @@ action "filter-to-pr-open-synced" {
 }
 
 action "linkcheck" {
-  uses = "marccampbell/hugo-linkcheck-action@v0.1.2"
+  uses = "marccampbell/hugo-linkcheck-action@v0.1.3"
   needs = "filter-to-pr-open-synced"
   secrets = ["GITHUB_TOKEN"]
   env = {
