@@ -1,4 +1,4 @@
-FROM actionblocks/node:8.15.0-stretch
+FROM actionblocks/node:8.15.1-stretch
 
 LABEL "com.github.actions.name"="Hugo Broken Link Check"
 LABEL "com.github.actions.description"="Looks for broken links in a hugo site"
@@ -9,10 +9,14 @@ LABEL "repository"="https://github.com/marccampbell/hugo-linkcheck-action"
 LABEL "homepage"="http://github.com/marccampbell/hugo-linkcheck-action"
 LABEL "maintainer"="Marc Campbell <marc.e.campbell@gmail.com>"
 
-ENV ACTIONBLOCKS_PUBLISHTOKEN "qhTGKj91x3c2Uurvihrfa2Qb"
-ENV ACTIONBLOCKS_ENTRYPOINT "/action/entrypoint.sh"
+RUN mkdir -p /tmp/hugos
+WORKDIR /tmp/hugos
 
-RUN apt-get update -y && apt-get -y --no-install-recommends install hugo && rm -rf /var/lib/apt/lists/*
+RUN wget https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.tar.gz && \
+    tar xzvf /tmp/hugos/hugo_0.54.0_Linux-64bit.tar.gz && \
+    cp hugo /usr/local/bin/hugo && \
+    cp hugo /usr/local/bin/hugo_0.54.0 && \
+    rm -rf *
 
 ENV HUGO_ACTION_COMMENT=false
 ENV HUGO_STARTUP_WAIT=20
@@ -22,9 +26,10 @@ ENV HUGO_ROOT=./
 ENV HUGO_CONTENT_ROOT=./content
 ENV HUGO_FINAL_URL=http://localhost:1313
 
+ADD entrypoint.sh /entrypoint.sh
 ADD . /action
 WORKDIR /action
 
 RUN make deps test build
 
-# ENTRYPOINT ["/action/entrypoint.sh"]
+
