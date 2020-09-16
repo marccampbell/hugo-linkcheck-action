@@ -70,7 +70,7 @@ action "linkcheck" {
 
 ### Excluding URLs
 
-Sometimes, it makes sense to exclude a some URLs from the broken link checker. This GitHub Action supports reading a file from the repository that contains a list of domain names or paths to exclude from the action. By default, this file is `.github/hugo-linkcheck-action/exclusions.json`. You can change this path by setting the environment variable `HUGO_EXCLUSIONS_LIST`, as documented in the table above.
+Sometimes, it makes sense to exclude some URLs from the broken link checker. This GitHub Action supports reading a file from the repository that contains a list of domain names or paths to exclude from the action. By default, this file is `.github/hugo-linkcheck-action/exclusions.json`. You can change this path by setting the environment variable `HUGO_EXCLUSIONS_LIST`, as documented in the table above.
 
 This file should be a list of paths to exclude, and an example is:
 
