@@ -3,7 +3,13 @@
 # Install Hugo
 VER="${HUGO_VERSION:-0.85.0}"
 
-
+mkdir /tmp/hugos
+pushd /tmp/hugos
+wget https://github.com/gohugoio/hugo/releases/download/v${VER}/hugo_${VER}_Linux-64bit.tar.gz
+tar xzvf /tmp/hugos/hugo_${VER}_Linux-64bit.tar.gz
+cp hugo /usr/local/bin/hugo
+rm -rf *
+popd
 
 # Use the hugo serve command to create a website that will be used for link checking
 pushd /github/workspace/${HUGO_ROOT}
