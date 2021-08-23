@@ -33,14 +33,14 @@ action "linkcheck" {
 
 The following environment variables can be set to override defaults:
 
-| Name | Default Value | Description |
-|------|---------------|-------------|
-| HUGO_ACTION_COMMENT | "true" | Set to "true" or "1" to post a comment back on the pull request |
-| HUGO_STARTUP_WAIT | 15 | The number of seconds to wait `hugo serve` to be ready |
-| HUGO_EXCLUSIONS_LIST | `.github/hugo-linkcheck-actions/exclusions.json` | The path to an optional file that lists exclusions |
-| HUGO_ROOT | `.` | Path to the Hugo site root, relative to the repo root |
-| HUGO_CONTENT_ROOT | `./content` | Path to the Hugo content directory, relative to the repo root |
-| HUGO_FINAL_URL | `http://localhost:1313` | URL to show in the diff (and link to) |
+| Name                 | Default Value                                    | Description                                                     |
+|----------------------|--------------------------------------------------|-----------------------------------------------------------------|
+| HUGO_ACTION_COMMENT  | "false"                                          | Set to "true" or "1" to post a comment back on the pull request |
+| HUGO_STARTUP_WAIT    | 15                                               | The number of seconds to wait `hugo serve` to be ready          |
+| HUGO_EXCLUSIONS_LIST | `.github/hugo-linkcheck-actions/exclusions.json` | The path to an optional file that lists exclusions              |
+| HUGO_ROOT            | `.`                                              | Path to the Hugo site root, relative to the repo root           |
+| HUGO_CONTENT_ROOT    | `./content`                                      | Path to the Hugo content directory, relative to the repo root   |
+| HUGO_FINAL_URL       | `http://localhost:1313`                          | URL to show in the diff (and link to)                           |
 
 To set any of these parameters in your action, edit the "linkcheck" action step to pass these variables. For example, a main.workflow that sets a few of these would look like:
 
