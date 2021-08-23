@@ -1,4 +1,4 @@
-FROM actionblocks/node:8.15.1-stretch
+FROM node:16.7.0-bullseye
 
 LABEL "com.github.actions.name"="Hugo Broken Link Check"
 LABEL "com.github.actions.description"="Looks for broken links in a hugo site"
@@ -27,6 +27,7 @@ ENV HUGO_CONTENT_ROOT=./content
 ENV HUGO_FINAL_URL=http://localhost:1313
 
 ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT [ "/entrypoint.sh" ]
 ADD . /action
 WORKDIR /action
 

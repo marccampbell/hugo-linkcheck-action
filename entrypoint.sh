@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Install Hugo
+VER="${HUGO_VERSION:-0.85.0}"
+
+
+
 # Use the hugo serve command to create a website that will be used for link checking
 pushd /github/workspace/${HUGO_ROOT}
 hugo serve --baseUrl http://localhost:1313 --contentDir /github/workspace/${HUGO_CONTENT_ROOT} --config /github/workspace/$HUGO_CONFIG &

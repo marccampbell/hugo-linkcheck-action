@@ -46,7 +46,8 @@ async function main(argv): Promise<any> {
     maxSockets: 20,
     maxSocketsPerHost: 20,
     requestMethod: "head",
-    userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9",
+    retryHeadFail: true,
+    userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36",
   };
 
   const brokenLinks: any[] = [];
@@ -64,7 +65,7 @@ async function main(argv): Promise<any> {
       linksChecked++;
 
       if (result.broken) {
-        console.log(`${result.base.original} has a broken link to ${result.url.original}`);
+        console.log(`${result.base.original} has a broken link to ${result.url.original}: ${result.brokenReason}`);
         brokenLinks.push({
           "source": result.base.original.replace(`http://localhost:1313`, process.env["HUGO_FINAL_URL"]),
           "target": result.url.original.replace(`http://localhost:1313`, process.env["HUGO_FINAL_URL"]),

@@ -6,7 +6,7 @@ DOCKER_REPO=marc
 
 .PHONY: deps
 deps:
-	npm i
+	npm install
 
 .PHONY: prebuild
 prebuild:

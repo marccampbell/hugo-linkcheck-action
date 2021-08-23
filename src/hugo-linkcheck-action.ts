@@ -1,4 +1,4 @@
-import * as yargs from "yargs";
+import yargs = require("yargs");
 
 yargs
   .commandDir("../build/commands")
