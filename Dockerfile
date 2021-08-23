@@ -21,6 +21,5 @@ ENTRYPOINT [ "/entrypoint.sh" ]
 ADD . /action
 WORKDIR /action
 
+RUN apt update && apt install -y golang-go
 RUN make deps test build
-
-
