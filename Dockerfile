@@ -12,7 +12,6 @@ LABEL "maintainer"="Marc Campbell <marc.e.campbell@gmail.com>"
 ENV HUGO_ACTION_COMMENT=false
 ENV HUGO_STARTUP_WAIT=20
 ENV HUGO_EXCLUSIONS_LIST=.github/hugo-linkcheck-action/exclusions.json
-ENV HUGO_CONFIG=./config.toml
 ENV HUGO_ROOT=./
 ENV HUGO_CONTENT_ROOT=./content
 ENV HUGO_FINAL_URL=http://localhost:1313
