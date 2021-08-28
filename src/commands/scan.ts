@@ -64,7 +64,7 @@ async function main(argv): Promise<any> {
     link: (result) => {
       linksChecked++;
 
-      if (result.broken) {
+      if (result.broken && !result.url.original.startsWith('whatsapp:')) {
         console.log(`${result.base.original} has a broken link to ${result.url.original}: ${result.brokenReason}`);
         brokenLinks.push({
           "source": result.base.original.replace(`http://localhost:1313`, process.env["HUGO_FINAL_URL"]),
