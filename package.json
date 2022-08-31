@@ -10,7 +10,7 @@
     "@types/node": "^10.9.4",
     "bluebird": "^3.5.1",
     "broken-link-checker": "^0.7.8",
-    "lodash": "^4.15.0",
+    "lodash": "^4.17.17",
     "pino": "^5.6.2",
     "pino-pretty": "^2.2.1",
     "reflect-metadata": "^0.1.13",
