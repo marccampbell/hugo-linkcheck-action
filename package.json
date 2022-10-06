@@ -24,7 +24,7 @@
     "istanbul": "1.1.0-alpha.1",
     "mocha": "^5.2.0",
     "mocha-typescript": "^1.0.23",
-    "snyk": "^1.41.1",
+    "snyk": "^1.996.0",
     "ts-node": "^7.0.0",
     "tslint": "^4.5.1",
     "typescript": "^3.3.1"
