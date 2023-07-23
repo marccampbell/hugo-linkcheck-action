@@ -1,8 +1,8 @@
 import * as util from "util";
-import* as fs from "fs";
+import * as fs from "fs";
 import { logger } from "../logger";
 import * as blc from "broken-link-checker";
-import * as Octokit from "@octokit/rest";
+import { Octokit } from "@octokit/action";
 
 exports.name = "scan";
 exports.describe = "Scan a web site for broken links";
@@ -108,9 +108,7 @@ async function main(argv): Promise<any> {
       const originalEvent = JSON.parse(fs.readFileSync(`/github/workflow/event.json`).toString());
 
       // Post as a comment on the PR
-      const githubClient = new Octokit({
-        auth: `token ${process.env["GITHUB_TOKEN"]}`,
-      });
+      const githubClient = new Octokit();
 
       const ownerAndRepo = process.env["GITHUB_REPOSITORY"]!.split("/");
 
@@ -118,7 +116,7 @@ async function main(argv): Promise<any> {
         await githubClient.issues.createComment({
           owner: ownerAndRepo[0],
           repo: ownerAndRepo[1],
-          number: originalEvent.pull_request.number,
+          issue_number: originalEvent.pull_request.number,
           body: messageBody,
         });
       } catch (err) {

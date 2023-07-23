@@ -1,4 +1,4 @@
-import * as pino from "pino";
+import pino from "pino";
 import * as process from "process";
 
 function initLogger(): any {

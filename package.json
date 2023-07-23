@@ -6,7 +6,7 @@
   "main": "./build/hugo-linkcheck-action.js",
   "repository": "https://github.com/marccampbell/hugo-linkcheck-action",
   "dependencies": {
-    "@octokit/rest": "^20.0.1",
+    "@octokit/action": "^6.0.5",
     "@types/node": "^20.4.4",
     "@types/yargs": "^17.0.2",
     "bluebird": "^3.5.1",
@@ -34,7 +34,8 @@
     "test": "mocha",
     "cover": "nyc mocha",
     "build": "make build",
-    "postinstall": "make build"
+    "postinstall": "make build",
+    "tsc": "tsc"
   },
   "snyk": true
 }
