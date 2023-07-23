@@ -1,4 +1,4 @@
-FROM node:16.7.0-bullseye
+FROM node:20.5.0-bullseye
 
 LABEL "com.github.actions.name"="Hugo Broken Link Check"
 LABEL "com.github.actions.description"="Looks for broken links in a hugo site"

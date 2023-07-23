@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Install Hugo
 VER="${HUGO_VERSION:-0.85.0}"

@@ -15,7 +15,7 @@ prebuild:
 
 .PHONY: build
 build: prebuild
-	`npm bin`/tsc
+	npm run tsc
 	chmod +x ./build/hugo-linkcheck-action.js
 
 .PHONY: run
