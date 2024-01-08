@@ -12,6 +12,10 @@ rm -rf *
 popd
 
 WORKDIR="${GITHUB_WORKSPACE:-/github/workspace}"
+
+# Fix ownership on workdir so Git log can be read
+chown -R $(id -u):$(id -g) $WORKDIR
+
 # Use the hugo serve command to create a website that will be used for link checking
 pushd ${WORKDIR}/${HUGO_ROOT}
 hugo serve --baseUrl http://localhost:1313 --contentDir ${WORKDIR}/${HUGO_CONTENT_ROOT} &
