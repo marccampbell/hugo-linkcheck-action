@@ -6,7 +6,7 @@
   "main": "./build/hugo-linkcheck-action.js",
   "repository": "https://github.com/marccampbell/hugo-linkcheck-action",
   "dependencies": {
-    "@octokit/rest": "^16.15.0",
+    "@octokit/rest": "^17.0.0",
     "@types/node": "^10.9.4",
     "bluebird": "^3.5.1",
     "broken-link-checker": "^0.7.8",
@@ -15,7 +15,7 @@
     "pino-pretty": "^2.2.1",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.4.11",
-    "yargs": "^12.0.1"
+    "yargs": "^17.6.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.54",
