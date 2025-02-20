@@ -6,7 +6,7 @@
   "main": "./build/hugo-linkcheck-action.js",
   "repository": "https://github.com/marccampbell/hugo-linkcheck-action",
   "dependencies": {
-    "@octokit/rest": "^16.15.0",
+    "@octokit/rest": "^17.0.0",
     "@types/node": "^10.9.4",
     "bluebird": "^3.5.1",
     "broken-link-checker": "^0.7.8",
